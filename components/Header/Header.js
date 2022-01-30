@@ -15,11 +15,12 @@ export default function Header() {
 
 	const content = (
 		<div className="container">
-			<div className="logo">
-				<Image src={"/death-star.svg"} alt="Star Wars: The Archive" width={100} height={100} />
+			<div className={styles.container}>
+				<div className="logo">
+					<Image src={"/death-star.svg"} alt="Star Wars: The Archive" width={100} height={100} />
+				</div>
+				<Menu links={links} />
 			</div>
-
-			<Menu links={links} />
 		</div>
 	)
 
@@ -27,7 +28,7 @@ export default function Header() {
 		<Relative 
 			wrapper={<header className={styles.header}></header>}
 			content={content}
-			backgroundImage={<Image src={"/space.png"} objectFit="cover" layout="fill" alt="" />}
+			backgroundImage={<Image src={"/space.jpg"} objectFit="cover" layout="fill" alt="" />}
 		/>
 	)
 }
