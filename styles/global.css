@@ -6,6 +6,10 @@
 	font-display: swap;
 }
 
+body {
+	font-family: 'Heebo', sans-serif;
+}
+
 .container {
 	width: 90%;
 	max-width: 1200px;
