@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Hero from '../Hero/Hero'
 
 import Menu from '../Menu/Menu'
 import Relative from '../Relative/Relative'
@@ -21,6 +22,7 @@ export default function Header() {
 				</div>
 				<Menu links={links} />
 			</div>
+			<Hero />
 		</div>
 	)
 
