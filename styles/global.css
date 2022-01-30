@@ -1,6 +1,19 @@
+@font-face {
+	font-family: "Star Jedi";
+	src: url("/fonts/Starjedi.ttf");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
 .container {
 	width: 90%;
 	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+h1 {
+	font-family: "Star Jedi";
+	font-size: 64px;
 }
