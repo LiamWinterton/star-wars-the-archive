@@ -20,7 +20,7 @@ export default function Header() {
 				<div className="logo">
 					<Image src={"/death-star.svg"} alt="Star Wars: The Archive" width={100} height={100} />
 				</div>
-				<Menu links={links} />
+				<Menu links={links} layout="horizontal" />
 			</div>
 			<Hero />
 		</div>

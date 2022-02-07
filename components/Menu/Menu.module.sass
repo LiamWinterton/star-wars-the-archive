@@ -1,5 +1,18 @@
-.menu
-	display: flex
-	flex-direction: row
-	justify-content: flex-end
-	align-items: center
+.menu-vertical
+	.link
+		display: block
+		margin-bottom: 1rem
+
+.menu-horizontal
+	.link
+		margin-right: 2rem
+
+		&:last-of-type
+			margin-right: 0
+	
+.link
+	text-decoration: none
+	font-weight: bold
+
+	&:hover
+		text-decoration: underline
