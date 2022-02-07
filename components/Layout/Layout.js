@@ -1,3 +1,4 @@
+import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 
 export default function Layout(props) {
@@ -7,6 +8,7 @@ export default function Layout(props) {
 			<main>
 				{props.children}
 			</main>
+			<Footer />
 		</>
 	)
 }
