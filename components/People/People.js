@@ -1,11 +1,11 @@
 import PersonSingle from "./PersonSingle"
 
-export default function People(props) {
-	console.log(props.people)
+import styles from './People.module.sass'
 
+export default function People(props) {
 	return (
 		<div>
-			<p>Results: {props.count}</p>
+			<p className={styles.results}>Results: {props.count}</p>
 			{props.people.map((person, i) => {
 				return <PersonSingle key={person.name} person={person} />
 			})}

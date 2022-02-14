@@ -1,5 +1,7 @@
 import Link from "next/link"
 
+import styles from './PersonSingle.module.sass'
+
 export default function PersonSingle(props) {
 	const { person } = props
 
@@ -10,7 +12,7 @@ export default function PersonSingle(props) {
 
 	return (
 		<Link href={`/person/${id}`}>
-			<a>{person.name}</a>
+			<a className={styles.link}>{person.name}</a>
 		</Link>
 	)
 }
