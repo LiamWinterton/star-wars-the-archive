@@ -1,12 +1,15 @@
+import { useRouter } from 'next/router'
 import Image from 'next/image'
-import Hero from '../Hero/Hero'
 
+import Hero from '../Hero/Hero'
 import Menu from '../Menu/Menu'
 import Relative from '../Relative/Relative'
 
 import styles from './Header.module.sass'
 
 export default function Header() {
+	const router = useRouter()
+
 	const links = [
 		{ text: "Home", href: "/" },
 		{ text: "People", href: "/people" },
@@ -22,7 +25,7 @@ export default function Header() {
 				</div>
 				<Menu links={links} layout="horizontal" />
 			</div>
-			<Hero />
+			{router.pathname === "/" ? <Hero /> : undefined}
 		</div>
 	)
 

@@ -18,7 +18,7 @@ export default function Menu(props) {
 	return (
 		<div className={classes.join(" ")}>
 			{links.map((link, i) => {
-				return <MenuItem key={link.href} href={link.href} text={link.text} className={styles.link} />
+				return <MenuItem key={i} href={link.href} text={link.text} className={styles.link} />
 			})}
 		</div>
 	)
