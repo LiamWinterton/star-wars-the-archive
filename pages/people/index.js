@@ -14,8 +14,14 @@ export default function allPeople(props) {
 	)
 }
 
-export async function getStaticProps() {
-	const { data } = await axios.get("http://localhost:3000/api/people/all")
+export async function getServerSideProps(context) {
+	let url = "http://localhost:3000/api/people"
+
+	if(context.query.page) {
+		url += `?page=${context.query.page}`
+	}
+
+	const { data } = await axios.get(url)
 
 	return {
 		props: {
