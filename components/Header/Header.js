@@ -12,10 +12,16 @@ export default function Header() {
 
 	const links = [
 		{ text: "Home", href: "/" },
-		{ text: "People", href: "/people" },
-		{ text: "Species", href: "/species" },
-		{ text: "Planets", href: "/planets" }
+		{ text: "People", href: "/people/1" },
+		{ text: "Species", href: "/species/1" },
+		{ text: "Planets", href: "/planets/1" }
 	]
+
+	const headerStyles = [ styles.header ]
+
+	if(router.route == "/") {
+		headerStyles.push(styles['home-header'])
+	}
 
 	const content = (
 		<div className="container">
@@ -31,7 +37,7 @@ export default function Header() {
 
 	return (
 		<Relative 
-			wrapper={<header className={styles.header}></header>}
+			wrapper={<header className={headerStyles.join(" ")}></header>}
 			content={content}
 			backgroundImage={<Image src={"/space.jpg"} objectFit="cover" layout="fill" alt="" />}
 		/>
