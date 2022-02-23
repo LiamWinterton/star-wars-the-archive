@@ -2,21 +2,21 @@ import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
 import Section from '../../components/Section/Section'
-import Species from '../../components/Species/Species'
+import Planets from '../../components/Planets/Planets'
 
 import Pagination from '../../components/Pagination/Pagination'
 
 const axios = require('axios')
 
-export default function allSpecies(props) {
+export default function allPlanets(props) {
 	return (
 		<Layout>
 			<Head>
-				<title>Star Wars: The Archive - Species</title>
+				<title>Star Wars: The Archive - Planets</title>
 			</Head>
-			<Section title="Species" type="main">
-				<Species species={props.species} count={props.count} />
-				<Pagination path="/species" previous={props.previous} next={props.next} />
+			<Section title="Planets" type="main">
+				<Planets planets={props.planets} count={props.count} />
+				<Pagination path="/planets" previous={props.previous} next={props.next} />
 			</Section>
 		</Layout>
 	)
@@ -25,7 +25,7 @@ export default function allSpecies(props) {
 export async function getStaticPaths() {
 	const paths = []
 
-	const { data } = await axios.get('https://swapi.dev/api/species/')
+	const { data } = await axios.get('https://swapi.dev/api/planets/')
 
 	const pages = Math.ceil(data.count / 10)
 
@@ -46,7 +46,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
 	const { params } = context
 
-	let url = new URL('https://swapi.dev/api/species/')
+	let url = new URL('https://swapi.dev/api/planets/')
 
 	if(params.id) {
 		url.searchParams.append("page", params.id)
@@ -59,7 +59,7 @@ export async function getStaticProps(context) {
 
 	return {
 		props: {
-			species: data.results,
+			planets: data.results,
 			count: data.count,
 			previous,
 			next
