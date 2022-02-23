@@ -1,4 +1,4 @@
-const axios = require('axios')
+import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
 import Section from '../../components/Section/Section'
@@ -6,9 +6,14 @@ import Planets from '../../components/Planets/Planets'
 
 import Pagination from '../../components/Pagination/Pagination'
 
+const axios = require('axios')
+
 export default function allPlanets(props) {
 	return (
 		<Layout>
+			<Head>
+				<title>Star Wars: The Archive - Planets</title>
+			</Head>
 			<Section title="Planets" type="main">
 				<Planets planets={props.planets} count={props.count} />
 				<Pagination path="/planets" previous={props.previous} next={props.next} />
