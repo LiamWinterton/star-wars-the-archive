@@ -12,15 +12,13 @@ export default function Pagination(props) {
 	const previousPage = previous ? new URL(previous).searchParams.get("page") : false
 	const nextPage = next ? new URL(next).searchParams.get("page") : false
 
-	const base = router.pathname
-
 	return(
 		<div className={styles.pagination}>
 			{previousPage &&
-				<Button href={`${base}?page=${previousPage}`} text="Previous" />
+				<Button href={`${props.path}/${previousPage}`} text="Previous" />
 			}
 			{nextPage !== false &&
-				<Button href={`${base}?page=${nextPage}`} text="Next" />
+				<Button href={`${props.path}/${nextPage}`} text="Next" />
 			}
 		</div>
 	)
