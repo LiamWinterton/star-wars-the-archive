@@ -18,11 +18,13 @@ export default function allPeople(props) {
 }
 
 export async function getStaticPaths() {
-	const { data } = await axios.get("http://localhost:3000/api/people/get-pages")
-
 	const paths = []
 
-	for (let i = 1; i <= data.pages; i++) {
+	const { data } = await axios.get('https://swapi.dev/api/people/')
+
+	const pages = Math.ceil(data.count / 10)
+
+	for (let i = 1; i <= pages; i++) {
 		paths.push({
 			params: {
 				id: i.toString()
@@ -39,20 +41,23 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
 	const { params } = context
 
-	let url = "http://localhost:3000/api/people"
+	let url = new URL('https://swapi.dev/api/people/')
 
 	if(params.id) {
-		url += `?page=${params.id}`
+		url.searchParams.append("page", params.id)
 	}
 
-	const { data } = await axios.get(url)
+	const { data } = await axios.get(url.href)
+
+	const previous = data.previous ? new URL(data.previous).searchParams.get("page") : false
+	const next = data.next ? new URL(data.next).searchParams.get("page") : false
 
 	return {
 		props: {
 			people: data.results,
 			count: data.count,
-			previous: data.previous,
-			next: data.next
+			previous,
+			next
 		}
 	}
 }
