@@ -44,7 +44,7 @@ export default function Header() {
 		<Relative 
 			wrapper={<header className={headerStyles.join(" ")}></header>}
 			content={content}
-			backgroundImage={<Image src={"/space.jpg"} objectFit="cover" layout="fill" alt="" />}
+			backgroundImage={<Image src={"/space.jpg"} objectFit="cover" layout="fill" alt="" priority />}
 		/>
 	)
 }
