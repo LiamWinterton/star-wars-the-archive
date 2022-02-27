@@ -8,7 +8,7 @@ import Section from '../../components/Section/Section'
 import Species from '../../components/Species/Species'
 import Pagination from '../../components/Pagination/Pagination'
 
-import Loading from '../../components/ResponseCode/Loading'
+import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
 
 export default function AllSpecies(props) {
