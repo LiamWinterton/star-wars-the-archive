@@ -1,17 +1,56 @@
 const axios = require('axios')
 
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
 import Section from '../../components/Section/Section'
 
 export default function Person(props) {
+	const router = useRouter()
+
+	if(router.isFallback) {
+		return (
+			<Layout>
+				<Section title="" type="main">
+					<h2>Loading...</h2>
+				</Section>
+			</Layout>
+		)
+	}
+
+	if(props.error) {
+		return (
+			<Layout>
+				<Section title="404" type="main">
+					<h2>The person you&apos;re looking for does not exist</h2>
+				</Section>
+			</Layout>
+		)
+	}
+
 	const { person } = props
 
-	return(
+	const getRows = Object.entries(person).map((value, i) => {
+		return (
+			<tr key={i}>
+				<td>{value[0]}</td>
+				<td>{value[1]}</td>
+			</tr>
+		)
+	})
+	
+	return (
 		<Layout>
-			<Section title={person.name} type="main">
-
+			<Head>
+				<title>Star Wars: The Archive - {person.name}</title>
+			</Head>
+			<Section title={person.name.toLowerCase()} type="main">
+				<table>
+					<tbody>
+						{getRows}
+					</tbody>
+				</table>
 			</Section>
 		</Layout>
 	)
@@ -20,11 +59,7 @@ export default function Person(props) {
 export async function getStaticPaths() {
 	const paths = []
 
-	const { data } = await axios.get('https://swapi.dev/api/people/')
-
-	const pages = Math.ceil(data.count / 10)
-
-	for (let i = 1; i <= pages; i++) {
+	for (let i = 1; i <= 10; i++) {
 		paths.push({
 			params: {
 				id: i.toString()
@@ -34,7 +69,7 @@ export async function getStaticPaths() {
 
 	return {
 		paths,
-		fallback: false
+		fallback: 'blocking'
 	}
 }
 
@@ -43,16 +78,20 @@ export async function getStaticProps(context) {
 
 	let url = new URL(`https://swapi.dev/api/people/${params.id}/`)
 
-	const { data } = await axios.get(url.href)
+	try {
+		const response = await axios.get(url.href)
 
-	console.log(data)
-
-	const previous = data.previous ? new URL(data.previous).searchParams.get("page") : false
-	const next = data.next ? new URL(data.next).searchParams.get("page") : false
-
-	return {
-		props: {
-			person: data
+		return {
+			props: {
+				person: response.data
+			},
+			revalidate: 60
+		}
+	} catch (error) {
+		return {
+			props: {
+				error: true
+			}
 		}
 	}
 }
