@@ -6,26 +6,21 @@ import Head from 'next/head'
 import Layout from '../../components/Layout/Layout'
 import Section from '../../components/Section/Section'
 
+import Loading from '../../components/Responses/Loading'
+import Handle404 from '../../components/Responses/404'
+
 export default function Person(props) {
 	const router = useRouter()
 
 	if(router.isFallback) {
 		return (
-			<Layout>
-				<Section title="" type="main">
-					<h2>Loading...</h2>
-				</Section>
-			</Layout>
+			<Loading />
 		)
 	}
 
 	if(props.error) {
 		return (
-			<Layout>
-				<Section title="404" type="main">
-					<h2>The person you&apos;re looking for does not exist</h2>
-				</Section>
-			</Layout>
+			<Handle404 />
 		)
 	}
 
@@ -74,11 +69,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-	const { params } = context
-
-	let url = new URL(`https://swapi.dev/api/people/${params.id}/`)
-
 	try {
+		const { params } = context
+	
+		let url = new URL(`https://swapi.dev/api/people/${params.id}/`)
+
 		const response = await axios.get(url.href)
 
 		return {

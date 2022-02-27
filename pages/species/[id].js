@@ -1,14 +1,31 @@
+const axios = require('axios')
+
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
 import Section from '../../components/Section/Section'
 import Species from '../../components/Species/Species'
-
 import Pagination from '../../components/Pagination/Pagination'
 
-const axios = require('axios')
+import Loading from '../../components/ResponseCode/Loading'
+import Handle404 from '../../components/Responses/404'
 
-export default function allSpecies(props) {
+export default function AllSpecies(props) {
+	const router = useRouter()
+
+	if(router.isFallback) {
+		return (
+			<Loading />
+		)
+	}
+
+	if(props.error) {
+		return (
+			<Handle404 />
+		)
+	}
+
 	return (
 		<Layout>
 			<Head>
@@ -39,30 +56,38 @@ export async function getStaticPaths() {
 
 	return {
 		paths,
-		fallback: false
+		fallback: 'blocking'
 	}
 }
 
 export async function getStaticProps(context) {
-	const { params } = context
-
-	let url = new URL('https://swapi.dev/api/species/')
-
-	if(params.id) {
-		url.searchParams.append("page", params.id)
-	}
-
-	const { data } = await axios.get(url.href)
-
-	const previous = data.previous ? new URL(data.previous).searchParams.get("page") : false
-	const next = data.next ? new URL(data.next).searchParams.get("page") : false
-
-	return {
-		props: {
-			species: data.results,
-			count: data.count,
-			previous,
-			next
+	try {
+		const { params } = context
+	
+		let url = new URL('https://swapi.dev/api/species/')
+	
+		if(params.id) {
+			url.searchParams.append("page", params.id)
+		}
+	
+		const { data } = await axios.get(url.href)
+	
+		const previous = data.previous ? new URL(data.previous).searchParams.get("page") : false
+		const next = data.next ? new URL(data.next).searchParams.get("page") : false
+	
+		return {
+			props: {
+				species: data.results,
+				count: data.count,
+				previous,
+				next
+			}
+		}
+	} catch (error) {
+		return {
+			props: {
+				error: true
+			}
 		}
 	}
 }
