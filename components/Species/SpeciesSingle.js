@@ -11,7 +11,7 @@ export default function SpeciesSingle(props) {
 	const id = parseInt(result[1])
 
 	return (
-		<Link href={`/person/${id}`}>
+		<Link href={`/race/${id}`}>
 			<a className={styles.link}>{species.name}</a>
 		</Link>
 	)
