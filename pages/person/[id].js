@@ -8,6 +8,7 @@ import Section from '../../components/Section/Section'
 
 import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
+import Table from '../../components/Table/Table'
 
 export default function Person(props) {
 	const router = useRouter()
@@ -25,15 +26,6 @@ export default function Person(props) {
 	}
 
 	const { person } = props
-
-	const getRows = Object.entries(person).map((value, i) => {
-		return (
-			<tr key={i}>
-				<td>{value[0]}</td>
-				<td>{value[1]}</td>
-			</tr>
-		)
-	})
 	
 	return (
 		<Layout>
@@ -41,11 +33,7 @@ export default function Person(props) {
 				<title>Star Wars: The Archive - {person.name}</title>
 			</Head>
 			<Section title={person.name.toLowerCase()} type="main">
-				<table>
-					<tbody>
-						{getRows}
-					</tbody>
-				</table>
+				<Table data={person} />
 			</Section>
 		</Layout>
 	)

@@ -5,6 +5,7 @@ import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
 import Section from '../../components/Section/Section'
+import Table from '../../components/Table/Table'
 
 import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
@@ -25,15 +26,6 @@ export default function Planet(props) {
 	}
 
 	const { planet } = props
-
-	const getRows = Object.entries(planet).map((value, i) => {
-		return (
-			<tr key={i}>
-				<td>{value[0]}</td>
-				<td>{value[1]}</td>
-			</tr>
-		)
-	})
 	
 	return (
 		<Layout>
@@ -41,11 +33,7 @@ export default function Planet(props) {
 				<title>Star Wars: The Archive - {planet.name}</title>
 			</Head>
 			<Section title={planet.name.toLowerCase()} type="main">
-				<table>
-					<tbody>
-						{getRows}
-					</tbody>
-				</table>
+				<Table data={planet} />
 			</Section>
 		</Layout>
 	)
