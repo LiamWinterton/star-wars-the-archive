@@ -9,6 +9,7 @@ import Section from '../../components/Section/Section'
 import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
 import Table from '../../components/Table/Table'
+import Movies from '../../components/Movies/Movies'
 
 export default function Person(props) {
 	const router = useRouter()
@@ -32,8 +33,12 @@ export default function Person(props) {
 			<Head>
 				<title>Star Wars: The Archive - {person.name}</title>
 			</Head>
-			<Section title={person.name.toLowerCase()} type="main">
+			<Section title={person.name.toLowerCase()} type="main" size="small">
+				<h2>Basic information</h2>
 				<Table data={person} />
+			</Section>
+			<Section title="Movies" type="main" size="small">
+				<Movies movies={person.films} />
 			</Section>
 		</Layout>
 	)
