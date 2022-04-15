@@ -26,7 +26,7 @@ export default function Header() {
 					<Link href="/" passHref>
 						<a className="flex flex-col items-center">
 							<Image src={"/death-star.svg"} alt="Star Wars: The Archive" width={100} height={100} />
-							<h1 className="font-bold text-white">SW: TA</h1>
+							<h1 className="font-starwars text-white">SW: TA</h1>
 						</a>
 					</Link>
 

@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: "Star Jedi";
+	src: url("../public/fonts/Starjedi.ttf")
+}
+
 @layer base {
 	.container {
 		@apply mx-auto;
-		width: 90%!important;
+		@apply w-11/12 !important;
 	}
 }
