@@ -1,5 +1,3 @@
-import styles from './Features.module.sass'
-
 import Feature from './Feature'
 
 function displayFeatures(features) {
@@ -21,7 +19,7 @@ export default function Features() {
 	]
 	
 	return (
-		<div className={styles.features}>
+		<div>
 			{displayFeatures(features)}
 		</div>
 	)

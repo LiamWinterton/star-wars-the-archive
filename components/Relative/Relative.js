@@ -1,13 +1,12 @@
 import React from "react"
-import styles from "./Relative.module.sass"
 
 export default function Relative(props) {
 	const child = (
 		<>
-			<div className={styles.content}>
+			<div>
 				{props.content}
 			</div>
-			<div className={styles["background-image"]}>
+			<div>
 				{props.backgroundImage}
 			</div>
 		</>
@@ -15,7 +14,7 @@ export default function Relative(props) {
 
 	return (
 		<>
-			{React.cloneElement(props.wrapper, { className: styles.wrapper + ' ' + props.wrapper.props.className }, child)}
+			{React.cloneElement(props.wrapper, {}, child)}
 		</>
 	)
 }

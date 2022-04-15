@@ -5,7 +5,6 @@ import Hero from '../Hero/Hero'
 import Menu from '../Menu/Menu'
 import Relative from '../Relative/Relative'
 
-import styles from './Header.module.sass'
 import Link from 'next/link'
 
 export default function Header() {
@@ -18,15 +17,9 @@ export default function Header() {
 		{ text: "Planets", href: "/planets/1" }
 	]
 
-	const headerStyles = [ styles.header ]
-
-	if(router.route == "/") {
-		headerStyles.push(styles['home-header'])
-	}
-
 	const content = (
 		<div className="container">
-			<div className={styles.container}>
+			<div>
 				<div className="logo">
 					<Link href="/" passHref>
 						<a>
@@ -42,7 +35,7 @@ export default function Header() {
 
 	return (
 		<Relative 
-			wrapper={<header className={headerStyles.join(" ")}></header>}
+			wrapper={<header></header>}
 			content={content}
 			backgroundImage={<Image src={"/space.jpg"} objectFit="cover" layout="fill" alt="" priority />}
 		/>

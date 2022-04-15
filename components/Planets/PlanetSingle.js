@@ -1,7 +1,5 @@
 import Link from "next/link"
 
-import styles from './PlanetSingle.module.sass'
-
 export default function PlanetSingle(props) {
 	const { planet } = props
 
@@ -12,7 +10,7 @@ export default function PlanetSingle(props) {
 
 	return (
 		<Link href={`/planet/${id}`}>
-			<a className={styles.link}>{planet.name}</a>
+			<a>{planet.name}</a>
 		</Link>
 	)
 }

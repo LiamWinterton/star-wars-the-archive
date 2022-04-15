@@ -1,11 +1,11 @@
 import Link from "next/link"
 
 export default function MenuItem(props) {
-	const { text, href, className } = props
+	const { text, href } = props
 
 	return (
 		<Link href={href}>
-			<a className={className}>{text}</a>
+			<a>{text}</a>
 		</Link>
 	)
 }
