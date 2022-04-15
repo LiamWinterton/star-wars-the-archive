@@ -8,6 +8,10 @@ module.exports = {
 			fontFamily: {
 				'sans': ['"Heebo"', 'sans'],
 				'starwars': ['"Star Jedi"']
+			},
+			colors: {
+				'black-off': '#1a1a1a',
+				'white-off': '#f1f1f1'
 			}
 		},
 	},
