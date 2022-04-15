@@ -4,8 +4,10 @@ export default function MenuItem(props) {
 	const { text, href } = props
 
 	return (
-		<Link href={href}>
-			<a>{text}</a>
-		</Link>
+		<li>
+			<Link href={href}>
+				<a>{text}</a>
+			</Link>
+		</li>
 	)
 }

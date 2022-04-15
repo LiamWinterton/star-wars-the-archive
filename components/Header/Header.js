@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 
@@ -9,6 +10,8 @@ import Link from 'next/link'
 export default function Header() {
 	const router = useRouter()
 
+	const [menuIsOpen, setMenuIsOpen] = useState(false)
+
 	const links = [
 		{ text: "Home", href: "/" },
 		{ text: "People", href: "/people/1" },
@@ -18,16 +21,24 @@ export default function Header() {
 
 	return (
 		<header className="relative">
-			<div className="container relative z-20">
-				<div>
-					<div>
-						<Link href="/" passHref>
-							<a>
-								<Image src={"/death-star.svg"} alt="Star Wars: The Archive" width={100} height={100} />
-							</a>
-						</Link>
+			<div className="container py-6 relative z-20">
+				<div className='flex justify-between items-center'>
+					<Link href="/" passHref>
+						<a className="flex flex-col items-center">
+							<Image src={"/death-star.svg"} alt="Star Wars: The Archive" width={100} height={100} />
+							<h1 className="font-bold text-white">SW: TA</h1>
+						</a>
+					</Link>
+
+					<div className="space-y-2" onClick={e => setMenuIsOpen(!menuIsOpen)}>
+						<div className="w-8 h-0.5 bg-white"></div>
+						<div className="w-8 h-0.5 bg-white"></div>
+						<div className="w-8 h-0.5 bg-white"></div>
 					</div>
-					<Menu links={links} layout="horizontal" />
+
+					<div className={`${menuIsOpen ? 'block' : 'hidden'}`}>
+						<Menu links={links} />
+					</div>
 				</div>
 				{/* {router.pathname === "/" ? <Hero /> : undefined} */}
 			</div>
