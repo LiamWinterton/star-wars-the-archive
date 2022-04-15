@@ -8,6 +8,10 @@ export default function Section(props) {
 	if(props.type) {
 		sectionStyles.push(styles[props.type])
 	}
+	
+	if(props.size) {
+		sectionStyles.push(styles[props.size])
+	}
 
 	return (
 		<section className={sectionStyles.join(" ")}>
