@@ -21,8 +21,8 @@ export default function Header() {
 
 	return (
 		<header className="relative">
-			<div className="container py-6 relative z-20 lg:py-12">
-				<div className='flex justify-between items-center'>
+			<div className="container relative z-20 lg:py-12">
+				<div className='flex justify-between items-center py-6'>
 					<Link href="/" passHref>
 						<a className="flex flex-col items-center">
 							<Image src={"/death-star.svg"} alt="Star Wars: The Archive" width={100} height={100} />
@@ -40,7 +40,7 @@ export default function Header() {
 						<Nav links={links} />
 					</div>
 				</div>
-				{/* {router.pathname === "/" ? <Hero /> : undefined} */}
+				{router.pathname === "/" ? <Hero /> : undefined}
 			</div>
 			<Image src={"/space.jpg"} objectFit="cover" layout="fill" alt="" className="z-10" priority />
 		</header>
