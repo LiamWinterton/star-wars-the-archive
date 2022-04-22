@@ -36,4 +36,19 @@
 
 		@apply lg:w-auto;
 	}
+
+	.image-container {
+		@apply w-full;
+	}
+
+	.image-container > span {
+		position: unset!important;
+	}
+
+	.image-container img {
+		object-fit: contain;
+		width: 100%!important;
+		position: relative!important;
+		height: unset!important;
+	}
 }
