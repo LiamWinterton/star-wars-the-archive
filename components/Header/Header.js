@@ -21,8 +21,8 @@ export default function Header() {
 
 	return (
 		<header className="relative bg-black-off">
-			<div className="container relative z-20 lg:pt-12">
-				<div className='flex justify-between items-center pt-6'>
+			<div className="container relative z-20">
+				<div className='flex justify-between items-center py-6'>
 					<Link href="/" passHref>
 						<a className="flex flex-col items-center">
 							<Image src={"/death-star.svg"} alt="Star Wars: The Archive" width={100} height={100} />
