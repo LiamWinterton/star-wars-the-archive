@@ -1,5 +1,3 @@
-import styles from "./Table.module.sass"
-
 export default function Table(props) {
 	const { data } = props
 
@@ -9,7 +7,7 @@ export default function Table(props) {
 	})
 
 	return (
-		<table className={styles.table}>
+		<table className="table-auto">
 			<tbody>
 				{entries.map((value, i) => {
 					const property = new String(value[0][0].toUpperCase() + value[0].substring(1)).replace("_", " ")

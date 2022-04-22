@@ -4,9 +4,8 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
-import Section from '../../components/Section/Section'
-import Planets from '../../components/Planets/Planets'
-import Pagination from '../../components/Pagination/Pagination'
+import Section from '../../components/Layout/Section'
+import Results from '../../components/Results/Results'
 
 import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
@@ -26,14 +25,22 @@ export default function AllPlanets(props) {
 		)
 	}
 
+	const { planets, count, previous, next } = props
+
 	return (
 		<Layout>
 			<Head>
 				<title>Star Wars: The Archive - Planets</title>
 			</Head>
-			<Section title="Planets" type="main">
-				<Planets planets={props.planets} count={props.count} />
-				<Pagination path="/planets" previous={props.previous} next={props.next} />
+			<Section title="planets">
+				<Results
+					results={planets}
+					archivePath="/planets"
+					singlePath="/planet"
+					imagePath="/assets/planets"
+					count={count}
+					previous={previous}
+					next={next} />
 			</Section>
 		</Layout>
 	)

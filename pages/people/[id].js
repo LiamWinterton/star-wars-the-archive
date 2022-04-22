@@ -2,9 +2,8 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
-import Section from '../../components/Section/Section'
-import People from '../../components/People/People'
-import Pagination from '../../components/Pagination/Pagination'
+import Section from '../../components/Layout/Section'
+import Results from '../../components/Results/Results'
 
 import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
@@ -33,9 +32,15 @@ export default function AllPeople(props) {
 			<Head>
 				<title>Star Wars: The Archive - People</title>
 			</Head>
-			<Section title="People" type="main">
-				<People people={people} count={count} />
-				<Pagination path="/people" previous={previous} next={next} />
+			<Section title="People">
+				<Results
+					results={people}
+					archivePath="/people"
+					singlePath="/person"
+					imagePath="/assets/characters"
+					count={count}
+					previous={previous}
+					next={next} />
 			</Section>
 		</Layout>
 	)
