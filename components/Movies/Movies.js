@@ -8,12 +8,12 @@ export default function Movies(props) {
 		const id = parseInt(result[1])
 
 		return (
-			<Image key={id} src={`/posters/${id}.jpg`} width="491" height="768" alt="Movie Poster" />
+			<Image key={id} src={`/assets/films/${id}.jpg`} width="491" height="768" alt="Movie Poster" />
 		)
 	})
 
 	return (
-		<div className={styles.movies}>
+		<div className="results-grid">
 			{movieImages}
 		</div>
 	)

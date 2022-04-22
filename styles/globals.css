@@ -51,4 +51,12 @@
 		position: relative!important;
 		height: unset!important;
 	}
+
+	.results-grid {
+		@apply grid;
+		@apply gap-6;
+		@apply md:grid-cols-2;
+		@apply md:gap-12;
+		@apply lg:grid-cols-5;
+	}
 }
