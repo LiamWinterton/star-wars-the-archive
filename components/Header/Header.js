@@ -21,7 +21,7 @@ export default function Header() {
 
 	return (
 		<header className="relative bg-black-off">
-			<div className="container relative z-20 lg:py-12">
+			<div className="container relative z-20 lg:pt-12">
 				<div className='flex justify-between items-center pt-6'>
 					<Link href="/" passHref>
 						<a className="flex flex-col items-center">
