@@ -6,7 +6,7 @@ export default function MenuItem(props) {
 	return (
 		<li>
 			<Link href={href}>
-				<a>{text}</a>
+				<a className="hover:underline">{text}</a>
 			</Link>
 		</li>
 	)

@@ -25,28 +25,30 @@ export default function Footer() {
 	]
 
 	return (
-		<footer>
+		<footer className="py-6 bg-gray-50 lg:py-12">
 			<div className="container">
-				<Grid columns="4">
+				<div className="grid gap-6 lg:grid-cols-4 lg:gap-12">
 					<div>
-						<div>
+						<div className="mb-3">
 							<Image src="https://via.placeholder.com/300x300" width={300} height={300} alt="Star Wars: The Archive" />
 						</div>
+
 						<p>Sit duis luctus pellentesque aliquet diam, amet. Lorem tempus enim ornare ipsum tincidunt in fringilla. Dignissim tincidunt rhoncus sagittis, risus consequat amet magna. Mattis ac varius ornare tempus non ornare. Accumsan ipsum magna purus venenatis.</p>
 					</div>
+
 					<div>
-						<h3>Pages</h3>
+						<h3 className="text-2xl font-bold mb-3">Pages</h3>
 						<Menu links={pages} layout="vertical" />
 					</div>
 					<div>
-						<h3>About Me</h3>
+						<h3 className="text-2xl font-bold mb-3">About Me</h3>
 						<Menu links={about} layout="vertical" />
 					</div>
 					<div>
-						<h3>Resources</h3>
+						<h3 className="text-2xl font-bold mb-3">Resources</h3>
 						<Menu links={resources} layout="vertical" />
 					</div>
-				</Grid>
+				</div>
 			</div>
 		</footer>
 	)
