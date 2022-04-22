@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Menu({ links }) {
 	return (
 		<nav>
-			<ul className="md:flex md:space-x-12 text-white font-bold lg:text-md">
+			<ul className="md:flex md:space-x-12 text-white font-bold lg:text-md xl:text-2xl">
 				{links.map((link, i) => {
 					return (
 						<li key={i}>
