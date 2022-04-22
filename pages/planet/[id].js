@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
-import Section from '../../components/Section/Section'
+import Section from '../../components/Layout/Section'
 import Table from '../../components/Table/Table'
 
 import Loading from '../../components/Responses/Loading'
