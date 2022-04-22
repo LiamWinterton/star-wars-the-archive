@@ -7,7 +7,7 @@ export default function Table(props) {
 	})
 
 	return (
-		<table>
+		<table className="table-auto">
 			<tbody>
 				{entries.map((value, i) => {
 					const property = new String(value[0][0].toUpperCase() + value[0].substring(1)).replace("_", " ")
