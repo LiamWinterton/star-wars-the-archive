@@ -5,7 +5,7 @@ export default function Button(props) {
 
 	return (
 		<Link href={href}>
-			<a>{text}</a>
+			<a className="button">{text}</a>
 		</Link>
 	)
 }

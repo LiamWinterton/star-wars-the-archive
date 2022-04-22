@@ -5,13 +5,15 @@ export default function Pagination(props) {
 
 	return(
 		<div>
-			<p>Results: {count}</p>
-			{previous &&
-				<Button href={`${props.path}/${previous}`} text="Previous" />
-			}
-			{next !== false &&
-				<Button href={`${props.path}/${next}`} text="Next" />
-			}
+			<p className="mb-6">Results: {count}</p>
+			<div className="buttons">
+				{previous &&
+					<Button href={`${props.path}/${previous}`} text="Previous" />
+				}
+				{next !== false &&
+					<Button href={`${props.path}/${next}`} text="Next" />
+				}
+			</div>
 		</div>
 	)
 }

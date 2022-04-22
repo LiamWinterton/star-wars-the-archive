@@ -13,3 +13,27 @@
 		@apply w-11/12 !important;
 	}
 }
+
+@layer components {
+	.buttons {
+		@apply space-y-6;
+
+		@apply lg:flex;
+		@apply space-y-0;
+		@apply space-x-6;
+	}
+
+	.button {
+		@apply inline-block;
+		@apply w-full;
+		@apply p-3;
+		@apply px-6;
+		@apply bg-black-off;
+		@apply text-white;
+		@apply rounded-md;
+		@apply text-xl;
+		@apply text-center;
+
+		@apply lg:w-auto;
+	}
+}

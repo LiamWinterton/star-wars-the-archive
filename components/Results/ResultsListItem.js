@@ -12,9 +12,9 @@ export default function ResultsListItem(props) {
 	return (
 		<li>
 			<Link href={`${baseUrl}/${id}`} passHref>
-				<a className="block">
-					<div className="mb-3">
-						<Image src={`${imagePath}/${id}.jpg`} layout="responsive" width={400} height={550} alt={item.name} />
+				<a className="block overflow-clip hover:underline">
+					<div className="mb-3 rounded">
+						<Image src={`${imagePath}/${id}.jpg`} className="hover:scale-110 transition-transform" layout="responsive" width={400} height={550} alt={item.name} />
 					</div>
 					<p className="font-bold text-center text-2xl">{item.name}</p>
 				</a>
