@@ -4,9 +4,8 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
-import Section from '../../components/Section/Section'
-import Species from '../../components/Species/Species'
-import Pagination from '../../components/Pagination/Pagination'
+import Section from '../../components/Layout/Section'
+import Results from '../../components/Results/Results'
 
 import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
@@ -26,14 +25,22 @@ export default function AllSpecies(props) {
 		)
 	}
 
+	const { species, count, previous, next } = props
+
 	return (
 		<Layout>
 			<Head>
 				<title>Star Wars: The Archive - Species</title>
 			</Head>
-			<Section title="Species" type="main">
-				<Species species={props.species} count={props.count} />
-				<Pagination path="/species" previous={props.previous} next={props.next} />
+			<Section title="Species">
+				<Results
+					results={species}
+					archivePath="/species"
+					singlePath="/race"
+					imagePath="/assets/species"
+					count={count}
+					previous={previous}
+					next={next} />
 			</Section>
 		</Layout>
 	)

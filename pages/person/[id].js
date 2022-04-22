@@ -4,12 +4,12 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
-import Section from '../../components/Section/Section'
+import Section from '../../components/Layout/Section'
+import Table from '../../components/Table/Table'
+import ResultsGrid from '../../components/Results/ResultsGrid'
 
 import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
-import Table from '../../components/Table/Table'
-import Movies from '../../components/Movies/Movies'
 
 export default function Person(props) {
 	const router = useRouter()
@@ -37,8 +37,23 @@ export default function Person(props) {
 				<h2>Basic information</h2>
 				<Table data={person} />
 			</Section>
-			<Section title="Movies" type="main" size="small">
-				<Movies movies={person.films} />
+			<Section title="Movies" className="bg-gray-100">
+				<ResultsGrid
+					items={person.films}
+					imagePath="/assets/films"
+				/>
+			</Section>
+			<Section title="Ships">
+				<ResultsGrid
+					items={person.starships}
+					imagePath="/assets/starships"
+				/>
+			</Section>
+			<Section title="vehicles" className="bg-gray-100">
+				<ResultsGrid
+					items={person.vehicles}
+					imagePath="/assets/vehicles"
+				/>
 			</Section>
 		</Layout>
 	)

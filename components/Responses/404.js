@@ -1,5 +1,5 @@
 import Layout from '../Layout/Layout'
-import Section from '../Section/Section'
+import Section from '../Layout/Section'
 
 export default function Handle404() {
 	return (

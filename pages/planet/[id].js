@@ -4,8 +4,9 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
-import Section from '../../components/Section/Section'
+import Section from '../../components/Layout/Section'
 import Table from '../../components/Table/Table'
+import ResultsGrid from '../../components/Results/ResultsGrid'
 
 import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
@@ -26,6 +27,8 @@ export default function Planet(props) {
 	}
 
 	const { planet } = props
+
+	console.log(planet)
 	
 	return (
 		<Layout>
@@ -34,6 +37,18 @@ export default function Planet(props) {
 			</Head>
 			<Section title={planet.name.toLowerCase()} type="main">
 				<Table data={planet} />
+			</Section>
+			<Section title="Films" className="bg-gray-100">
+				<ResultsGrid
+					items={planet.films}
+					imagePath="/assets/films"
+				/>
+			</Section>
+			<Section title="People">
+				<ResultsGrid
+					items={planet.residents}
+					imagePath="/assets/characters"
+				/>
 			</Section>
 		</Layout>
 	)

@@ -1,15 +1,16 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 
 import Hero from '../Hero/Hero'
-import Menu from '../Menu/Menu'
-import Relative from '../Relative/Relative'
+import Nav from './Nav'
 
-import styles from './Header.module.sass'
 import Link from 'next/link'
 
 export default function Header() {
 	const router = useRouter()
+
+	const [navIsOpen, setnavIsOpen] = useState(false)
 
 	const links = [
 		{ text: "Home", href: "/" },
@@ -18,33 +19,30 @@ export default function Header() {
 		{ text: "Planets", href: "/planets/1" }
 	]
 
-	const headerStyles = [ styles.header ]
-
-	if(router.route == "/") {
-		headerStyles.push(styles['home-header'])
-	}
-
-	const content = (
-		<div className="container">
-			<div className={styles.container}>
-				<div className="logo">
+	return (
+		<header className="relative bg-black-off">
+			<div className="container relative z-20">
+				<div className='flex justify-between items-center py-6'>
 					<Link href="/" passHref>
-						<a>
+						<a className="flex flex-col items-center">
 							<Image src={"/death-star.svg"} alt="Star Wars: The Archive" width={100} height={100} />
+							<h1 className="font-starwars text-white">SW: TA</h1>
 						</a>
 					</Link>
-				</div>
-				<Menu links={links} layout="horizontal" />
-			</div>
-			{router.pathname === "/" ? <Hero /> : undefined}
-		</div>
-	)
 
-	return (
-		<Relative 
-			wrapper={<header className={headerStyles.join(" ")}></header>}
-			content={content}
-			backgroundImage={<Image src={"/space.jpg"} objectFit="cover" layout="fill" alt="" priority />}
-		/>
+					<div className="space-y-2 md:hidden" onClick={e => setnavIsOpen(!navIsOpen)}>
+						<div className="w-8 h-0.5 bg-white"></div>
+						<div className="w-8 h-0.5 bg-white"></div>
+						<div className="w-8 h-0.5 bg-white"></div>
+					</div>
+
+					<div className={`${navIsOpen ? 'block' : 'hidden md:block'}`}>
+						<Nav links={links} />
+					</div>
+				</div>
+
+				{router.pathname === "/" ? <Hero /> : undefined}
+			</div>
+		</header>
 	)
 }

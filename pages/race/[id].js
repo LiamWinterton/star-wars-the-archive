@@ -4,7 +4,8 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import Layout from '../../components/Layout/Layout'
-import Section from '../../components/Section/Section'
+import Section from '../../components/Layout/Section'
+import ResultsGrid from '../../components/Results/ResultsGrid'
 
 import Loading from '../../components/Responses/Loading'
 import Handle404 from '../../components/Responses/404'
@@ -26,6 +27,8 @@ export default function Race(props) {
 	}
 
 	const { race } = props
+
+	console.log(race)
 	
 	return (
 		<Layout>
@@ -34,6 +37,18 @@ export default function Race(props) {
 			</Head>
 			<Section title={race.name.toLowerCase()} type="main">
 				<Table data={race} />
+			</Section>
+			<Section title="Movies" className="bg-gray-100">
+				<ResultsGrid
+					items={race.films}
+					imagePath="/assets/films"
+				/>
+			</Section>
+			<Section title="People">
+				<ResultsGrid
+					items={race.people}
+					imagePath="/assets/characters"
+				/>
 			</Section>
 		</Layout>
 	)
