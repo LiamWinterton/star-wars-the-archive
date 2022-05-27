@@ -12,9 +12,8 @@ export default function Footer() {
 	]
 	
 	const about = [
-		{ text: "Github", href: "#" },
-		{ text: "Portfolio", href: "#" },
-		{ text: "Twitter", href: "#" }
+		{ text: "Github", href: "https://github.com/LiamWinterton" },
+		{ text: "Portfolio", href: "https://www.liam.winterton.dev/" }
 	]
 
 	const resources = [
