@@ -30,7 +30,7 @@ export default function Footer() {
 				<div className="grid gap-6 lg:grid-cols-4 lg:gap-12">
 					<div>
 						<div className="mb-3">
-							<Image src="https://via.placeholder.com/300x300" width={300} height={300} alt="Star Wars: The Archive" />
+							<Image src="/images/400x400.png" width={300} height={300} alt="Star Wars: The Archive" />
 						</div>
 
 						<p>Sit duis luctus pellentesque aliquet diam, amet. Lorem tempus enim ornare ipsum tincidunt in fringilla. Dignissim tincidunt rhoncus sagittis, risus consequat amet magna. Mattis ac varius ornare tempus non ornare. Accumsan ipsum magna purus venenatis.</p>
